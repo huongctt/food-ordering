@@ -1,0 +1,10 @@
+maximum_length_description: 100
+minimum_length_description: 1
+maximum_length_comment: 100
+paginate:
+  default_page: 1
+  default_per_page: 2
+range_price:
+  range_1: [1000, 50000]
+  range_2: [50000, 100000]
+  range_3: [100000, 200000] 

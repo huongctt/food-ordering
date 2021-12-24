@@ -1,0 +1,52 @@
+<h1 class="text-center mt-4">Create a new food</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class ="shadow p-3 mb-3 bg-info rounded" >
+        <%= form_for @food do |f| %>
+          <div class="form-group row">
+            <%= f.label :name, t('.name'), class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :name, class: "form-control shadow rounded", placeholder: "Enter a name" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :description, t('.description'), class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :description, class: "form-control shadow rounded", placeholder: "Enter a description" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :price, t('.price'), class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :price, class: "form-control shadow rounded", placeholder: "Enter a price" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :category, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.collection_select(:category_id, Category.all, :id, :name, { multiple: true, size: 4, class: "custom-select shadow rounded" }) %>
+            </div>
+          </div>
+          <%= f.fields_for :images do |p| %>
+            <div class="form-group row">
+              <span class="image col-10">
+                <%= p.file_field :image %>
+              </span>
+            </div>
+          <% end %>
+          <%= f.fields_for :images do |p| %>
+          <div class="form-group row">
+            <span class="image col-10">
+              <%= p.file_field :image %>
+            </span>
+          </div>
+          <% end %>
+          <div class="form-group row justify-content-center">
+            <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

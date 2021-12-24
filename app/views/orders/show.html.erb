@@ -1,0 +1,23 @@
+<div class="container">
+  <% @order.order_items.each do |order_item| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-2">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <div class="h3"> <%= link_to order_item.food.name, food_path(order_item.food) %></div>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= t('.price')%>: <%= order_item.food.price %></p>
+            <p class="card-text"><%= t('.quantity')%>: <%= order_item.quantity %></p>
+            <p class="card-text"><%= link_to t('.delete'), order_item_path(order_item), class: "btn btn-outline-danger", method: :delete, data: {confirm: t('flash.sure')} %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <h3><%= t('.total') %> : <%= @order.totalprice %></h3>
+  <% if @order.status == "init" %>
+    <%= link_to t('.buy'), edit_order_path(@order), class: "btn btn-outline-danger" %>
+  <% end %>
+</div>
+

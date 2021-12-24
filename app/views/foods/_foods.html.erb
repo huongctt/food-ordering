@@ -1,0 +1,43 @@
+<div class="container">
+  <% @foods.each do |food| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-2">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <div class="h3"> <%= link_to food.name, food_path(food) %></div>
+            <div class="mt-2"> <%= link_to food.category.name, category_path(food.category), class: "badge badge-pill badge-info mr-1" %> </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= t '.description'%>: <%= food.description %></p>
+            <p class="card-text"><%= t '.price'%>: <%= food.price %></p>
+            <% unless food.images.length == 0 %>
+              <img src= "<%= food.images.first.image.url %>" width="600px"/>
+            <% end %>
+            <div class = "mt-4">
+              <% if user_signed_in? && current_user.admin? %>
+                <%= link_to t('foods.index.delete'), food_path(food), class: "btn btn-outline-danger", method: :delete, data: {confirm: t('flash.sure')} %>
+              <% end %>
+            </div>
+            <div class = "mt-4">
+              <% @order_item = OrderItem.new %>
+              <% if user_signed_in? && !current_user.admin? %>
+                <%= form_with(model: @order_item, class: "shadow p-3 mb-3 rounded", local: true) do |f| %>
+                  <div class="form-group row">
+                    <%= f.label :quantity, t('.quantity'), class: "col-2 col-form-label text-dark" %>
+                    <div class="col-10">
+                      <%= f.text_field :quantity, class: "form-control shadow rounded" %>
+                    </div>
+                  </div>
+                  <%= f.hidden_field :food_id, value: food.id %>
+                  <div class="form-group row justify-content-center">
+                    <%= f.submit class: "btn btn-outline-dark btn-lg" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

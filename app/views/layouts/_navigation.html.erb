@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">HB FOOD</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to t("nav.home"), root_url, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('nav.categories'), categories_path, class: "nav-link"%>
+      </li>
+      <% if user_signed_in? && current_user.admin? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('managepage') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to t('nav.newcategory'), new_category_path, class: "dropdown-item"%>
+            <%= link_to t('nav.newfood'), new_food_path, class: "dropdown-item"%>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Orders", orders_path, class: "nav-link"%>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to t('nav.logout'), destroy_user_session_path,:method => :delete , class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Cart", cart_path, class: "nav-link"%>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to t('.login'), new_user_session_path, class: "nav-link"%>
+        </li>
+      <% end %>
+      <% if user_signed_in? && !current_user.admin?%>
+      <li class="nav-item">
+        <%= link_to t('nav.myorders'), user_path(current_user), class: "nav-link"%>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

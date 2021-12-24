@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_time: 2021-10-27 14:28:01
+  receive_time: 2021-10-27 14:28:01
+  totalprice: 1
+  address: MyString
+  status: 1
+
+two:
+  order_time: 2021-10-27 14:28:01
+  receive_time: 2021-10-27 14:28:01
+  totalprice: 1
+  address: MyString
+  status: 1

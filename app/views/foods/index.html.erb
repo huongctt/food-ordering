@@ -1,0 +1,28 @@
+<div class="text-center mt-4">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont, t('.name') %>
+    <%= f.search_field :name_cont %>
+    <%= sort_link(@q, :price, t('.price'), default_order: :asc , class: "link-light")%>
+    <%= sort_link(@q, :created_at, t('.latest'), default_order: :desc , class: "link-light")%>
+    <%= f.select :price,
+      options_for_select([[t('.chooseprice'),nil],[t('.price1'),'1'],[t('.price2'),'2'],[t('.price3'),'3']], params[:price]),
+      {}, { :class => 'span3 controls controls-row' } %>
+    <%= f.submit class: "btn btn-outline-success my-2 my-sm-0"%>
+  <% end %>
+</div>
+<h1 class="text-center mt-4"><%= t('.listing') %></h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="flickr_pagination">
+      <%= paginate @foods %>
+    </div>
+  </div>
+</div>
+<%= render 'foods' %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="flickr_pagination">
+      <%= paginate @foods %>
+    </div>
+  </div>
+</div>

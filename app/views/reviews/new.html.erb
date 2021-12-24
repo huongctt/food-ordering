@@ -1,0 +1,28 @@
+<h1 class="text-center mt-4"><%= t '.title' %></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+        <%= form_with( class: "shadow p-3 mb-3 bg-info rounded", :url => { :action => :create}, :method => :post, local: true) do |f| %>
+          <div class="form-group row">
+            <p class= "col-2 col-form-label text-light"><%= t('.rate') %></p>
+            <% for i in 1..5 do %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :rate, i, class: "form-check-input"%>
+              <%= f.label :address, i, class: "form-check-label col-1 text-light" %>
+            </div>
+            <% end %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :comment, t(".comment"), class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :comment, class: "form-control shadow rounded"%>
+            </div>
+          </div>
+          <%= f.hidden_field :order_id, value: @order.id %>
+          <div class="form-group row justify-content-center">
+            <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

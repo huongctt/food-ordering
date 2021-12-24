@@ -1,0 +1,2 @@
+var address = document.querySelector("#addresses");
+address.insertAdjacentHTML("beforeend", "<%= j render partial: "order_address", locals: {order_address: @order_address} %>");

@@ -1,0 +1,37 @@
+<div class="container">
+  <% @orders.each do |order| %>
+    <% if order.status != "init" %>
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-2">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <p class="card-header font-italic bg-info font-weight-bold"> <%= t('.status') %> : <%= order.status %></p>
+            <p class="card-header font-italic"> <%= order.order_time %></p>
+            <p class="card-header font-italic"> <%= order.address %></p>
+            <% order.order_items.each do |order_item| %>
+              <div class="card-header font-italic">
+                <div class="h3"> <%= link_to order_item.food.name, food_path(order_item.food) %></div>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= t('.price')%>: <%= order_item.food.price %></p>
+                <p class="card-text"><%= t('.quantity')%>: <%= order_item.quantity %></p>
+              </div>
+            <% end %>
+            <h3 class="card-header font-italic"><%= t('total') %> : <%= order.totalprice %></h3>
+            <% if order.status == "created" %>
+            <div class="form-group row justify-content-center">
+              <%= form_with(class: "shadow p-3 mb-3 rounded", local: true, :url => { :action => :accept, :id => order}) do |f| %>
+                <%= f.hidden_field :status, value: 'accepted' %>
+                  <%= f.submit "Accept", class: "btn btn-outline-dark btn-lg" %>
+              <% end %>
+              <%= form_with(class: "shadow p-3 mb-3 rounded", local: true, :url => { :action => :accept, :id => order}) do |f| %>
+                <%= f.hidden_field :status, value: 'declined' %>
+                  <%= f.submit "Decline", class: "btn btn-outline-dark btn-lg" %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

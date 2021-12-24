@@ -1,0 +1,22 @@
+<h1 class="text-center mt-4"><%= t '.title' %></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= form_with(model: @order_address, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :address, t(".address"), class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :address, class: "form-control shadow rounded", placeholder: t('.address_placeholder') %>
+          </div>
+        </div>
+        <%= f.label :is_using, class: "checkbox inline ml-4" do %>
+          <%= f.check_box :is_using %>
+          <span> <%= t('.address_using') %> </span>
+        <% end %>
+        <div class="form-group row justify-content-center">
+          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

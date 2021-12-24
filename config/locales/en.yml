@@ -1,0 +1,132 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  nav:
+    home: "Home"
+    categories: "Categories"
+    managepage: "Manage page"
+    newcategory: "New category"
+    newfood: "New food"
+    login: "Log in"
+    logout: "Log out"
+    myorders: "My orders"
+  homes:
+    index:
+      welcome: 'Welcome to HB FOOD!'
+      title: 'HOME'
+  layouts:
+    navigation:
+      home: 'Home'
+      categories: 'Categories'
+  flash:
+    admin: 'Only admin can do this action'
+    sure: 'Are you sure'
+    success: 'Successfully'
+    category:
+      success: 'Category was successfully created'
+      notfound: 'Can not find this category'
+    food:
+      success: 'Food was successfully created'
+      notfound: 'Can not find this food'
+      delete: 'Delete successfully'
+      notdelete: 'Can not delete this food'
+    address:
+      success: 'Address was successfully created'
+    item:
+      success: 'Add items successfully'
+    orderitem:
+      success: 'Order was successfully created'
+      notfound: 'Can not find this order'
+      delete: 'Delete successfully'
+      notdelete: 'Can not delete this order'
+    order:
+      success: 'Successfully'
+  foods:
+    index:
+      listing: 'Listing foods'
+      category: 'Category'
+      description: 'Description: '
+      price: 'Price '
+      delete: 'Delete'
+      quantity: 'Quantity'
+      latest: 'Latest'
+      name: 'Name'
+      chooseprice: 'Choose price'
+      price1: '0-50000'
+      price2: '50000-100000'
+      price3: '100000-200000'
+    new:
+      name: 'Name'
+      description: 'Description'
+      price: 'Price'
+    show:
+      review: 'REVIEW'
+      rate: 'Rate'
+      comment: 'Comment'
+  categories:
+    new:
+      name: 'Category name'
+    show:
+      category: 'Category'
+    index:
+      categories: 'Categories'
+  order_addresses:
+    new:
+      title: 'Create new address'
+      address: 'Address'
+      address_placeholder: 'Enter a address'
+      address_using: 'I am using this address'
+  orders:
+    show:
+      price: 'Price'
+      quantity: 'Quantity'
+      delete: 'Delete'
+      buy: 'BUY'
+      total: 'Total'
+    edit:
+      title: 'Place an order'
+      newaddress: 'Create a new address'
+      chooseaddress: 'Choose your address'
+    index:
+      status: 'Status'
+      total: 'Total'
+      accept: 'Accept'
+  users:
+    show:
+      status: 'Status'
+      total: 'Total'
+  reviews:
+    new:
+      title: 'Write your review'
+      comment: 'Comment'
+      rate: 'Rate'
